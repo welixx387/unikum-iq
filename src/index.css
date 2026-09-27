@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Палитра: кобальт и шафран — цвета «цветных» прогрессивных матриц Равена. */
+:root {
+  color-scheme: light;
+  --bg: 240 243 248;
+  --surface: 255 255 255;
+  --raised: 246 248 252;
+  --ink: 17 26 51;
+  --muted: 84 95 122;
+  --faint: 136 146 168;
+  --line: 219 225 236;
+  --cobalt: 36 70 199;
+  --cobalt-soft: 228 234 252;
+  --saffron: 204 109 20;
+  --saffron-soft: 252 238 222;
+  --good: 22 135 90;
+  --good-soft: 222 244 234;
+  --bad: 207 59 59;
+  --bad-soft: 252 231 231;
+  --glow-a: 36 70 199;
+  --glow-b: 232 135 30;
+  --dot: 17 26 51;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --bg: 9 14 30;
+    --surface: 19 28 54;
+    --raised: 25 36 68;
+    --ink: 233 237 247;
+    --muted: 154 166 194;
+    --faint: 104 116 146;
+    --line: 40 54 92;
+    --cobalt: 123 147 255;
+    --cobalt-soft: 32 44 92;
+    --saffron: 255 165 61;
+    --saffron-soft: 66 44 20;
+    --good: 61 203 138;
+    --good-soft: 18 56 42;
+    --bad: 255 110 110;
+    --bad-soft: 72 26 32;
+    --glow-a: 90 116 255;
+    --glow-b: 255 150 50;
+    --dot: 233 237 247;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: 9 14 30;
+  --surface: 19 28 54;
+  --raised: 25 36 68;
+  --ink: 233 237 247;
+  --muted: 154 166 194;
+  --faint: 104 116 146;
+  --line: 40 54 92;
+  --cobalt: 123 147 255;
+  --cobalt-soft: 32 44 92;
+  --saffron: 255 165 61;
+  --saffron-soft: 66 44 20;
+  --good: 61 203 138;
+  --good-soft: 18 56 42;
+  --bad: 255 110 110;
+  --bad-soft: 72 26 32;
+  --glow-a: 90 116 255;
+  --glow-b: 255 150 50;
+  --dot: 233 237 247;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  @apply bg-bg text-ink font-sans antialiased;
+  background-color: rgb(var(--bg));
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+/* Фон «бланка ответов»: едва заметная точечная сетка. */
+.sheet {
+  background-image: radial-gradient(rgb(var(--dot) / 0.07) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+.eyebrow {
+  @apply font-mono text-[11px] uppercase text-muted;
+  letter-spacing: 0.14em;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--cobalt));
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+::selection {
+  background: rgb(var(--cobalt) / 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
